@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+    <a href="#home"         class="sidebar-link" data-tooltip="Mở đầu">    <i data-lucide="home"></i></a>
+    <a href="#about"        class="sidebar-link" data-tooltip="About me">   <i data-lucide="user"></i></a>
+    <a href="#skills"       class="sidebar-link" data-tooltip="Skills">     <i data-lucide="zap"></i></a>
+    <a href="#achievements" class="sidebar-link" data-tooltip="Thành tích"> <i data-lucide="trophy"></i></a>
+    <a href="#projects"     class="sidebar-link" data-tooltip="Projects">   <i data-lucide="code-2"></i></a>
+    <a href="#contact"      class="sidebar-link" data-tooltip="Contact">    <i data-lucide="mail"></i></a>
+</div>
+
+<div class="container">
+
+    <!-- ── HERO ── -->
+    <section id="home" class="section hero">
+        <canvas id="particles"></canvas>
+        <canvas id="waves"></canvas>
+
+        <!-- Code / math floating text overlay -->
+        <div class="hero-code-overlay" aria-hidden="true">
+            <span>#include &lt;iostream&gt;</span>
+            <span>∇f(x) = 0</span>
+            <span>int main() {</span>
+            <span>Ax = λx</span>
+            <span>for(int i=0; i&lt;n; i++)</span>
+            <span>∫₀¹ f(x)dx</span>
+            <span>cout &lt;&lt; "Hello";</span>
+            <span>det(A) ≠ 0</span>
+            <span>return 0;</span>
+            <span>lim x→∞</span>
+            <span>vector&lt;int&gt; v;</span>
+            <span>∂²u/∂t²</span>
+            <span>while(true) {</span>
+            <span>rank(A) = n</span>
+        </div>
+
+        <!-- Pixel art SVG decorations -->
+        <div class="hero-pixels" aria-hidden="true">
+            <!-- Pixel computer / terminal -->
+            <svg class="px-item px-terminal" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                <rect x="2" y="4" width="28" height="18" rx="2" fill="none" stroke="rgba(122,170,206,0.5)" stroke-width="2"/>
+                <rect x="5" y="7" width="22" height="12" fill="rgba(122,170,206,0.12)"/>
+                <rect x="6" y="9" width="4" height="1" fill="rgba(0,255,150,0.6)"/>
+                <rect x="6" y="11" width="7" height="1" fill="rgba(0,255,150,0.4)"/>
+                <rect x="6" y="13" width="5" height="1" fill="rgba(0,255,150,0.4)"/>
+                <rect x="12" y="22" width="8" height="3" fill="rgba(122,170,206,0.4)"/>
+                <rect x="8" y="25" width="16" height="2" rx="1" fill="rgba(122,170,206,0.35)"/>
+            </svg>
+            <!-- Pixel math sigma -->
+            <svg class="px-item px-sigma" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <text x="2" y="20" font-size="22" font-weight="900" fill="rgba(122,170,206,0.45)" font-family="serif">Σ</text>
+            </svg>
+            <!-- Pixel coffee cup -->
+            <svg class="px-item px-coffee" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="10" width="12" height="10" rx="1" fill="none" stroke="rgba(122,170,206,0.45)" stroke-width="1.5"/>
+                <path d="M16 12 Q20 12 20 15 Q20 18 16 18" fill="none" stroke="rgba(122,170,206,0.4)" stroke-width="1.5"/>
+                <rect x="3" y="20" width="14" height="2" rx="1" fill="rgba(122,170,206,0.3)"/>
+                <path d="M8 8 Q8 5 10 5 Q10 3 12 3" fill="none" stroke="rgba(122,170,206,0.3)" stroke-width="1.2"/>
+            </svg>
+            <!-- Pixel brackets {} -->
+            <svg class="px-item px-brackets" viewBox="0 0 32 24" xmlns="http://www.w3.org/2000/svg">
+                <text x="1" y="19" font-size="20" font-weight="900" fill="rgba(0,255,150,0.2)" font-family="monospace">{ }</text>
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <div class="avatar-upload">
+                <label for="upload-avatar">
+                    <img id="preview" src="images/avatar.jpg" alt="avatar"
+                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22150%22 height=%22150%22%3E%3Ccircle cx=%2275%22 cy=%2275%22 r=%2275%22 fill=%22%234a7a9b%22/%3E%3Ctext x=%2250%25%22 y=%2254%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 font-size=%2248%22 fill=%22%23e8f0f7%22%3E%3F%3C/text%3E%3C/svg%3E'">
+                    <div class="overlay">+ Thêm ảnh</div>
+                </label>
+                <input type="file" id="upload-avatar" accept="image/*">
+            </div>
+
+            <div class="hero-badge">HUSTer</div>
+            <h2 class="hero-name">kduy1030</h2>
+            <p class="hero-tag"><span class="hero-tag-hl">IT1-07</span></p>
+            <p class="hero-quote">"First, solve the problem. Then, write the code."</p>
+        </div>
+    </section>
+
+    <!-- ── ABOUT ── -->
+    <section id="about" class="section about-section">
+
+        <!-- Marquee text background -->
+        <div class="about-marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>ABOUT ME</span><span>DEVELOPER</span><span>STUDENT</span><span>CREATOR</span>
+                <span>ABOUT ME</span><span>DEVELOPER</span><span>STUDENT</span><span>CREATOR</span>
+                <span>ABOUT ME</span><span>DEVELOPER</span><span>STUDENT</span><span>CREATOR</span>
+            </div>
+            <div class="marquee-track marquee-track-2">
+                <span>IT1-07</span><span>HANOI</span><span>CODE</span><span>LEARN</span><span>BUILD</span>
+                <span>IT1-07</span><span>HANOI</span><span>CODE</span><span>LEARN</span><span>BUILD</span>
+                <span>IT1-07</span><span>HANOI</span><span>CODE</span><span>LEARN</span><span>BUILD</span>
+            </div>
+        </div>
+
+        <!-- Main layout -->
+        <div class="about-layout">
+
+            <!-- Left: bust figure -->
+            <div class="about-bust">
+                <svg viewBox="0 0 260 380" xmlns="http://www.w3.org/2000/svg" class="bust-svg">
+                    <!-- Glow halo -->
+                    <ellipse cx="130" cy="130" rx="90" ry="90" fill="rgba(122,170,206,0.08)"/>
+
+                    <!-- Neck + shoulders / torso base -->
+                    <path d="M75 370 Q60 300 65 260 Q70 230 90 215 Q108 205 130 203 Q152 205 170 215 Q190 230 195 260 Q200 300 185 370 Z"
+                          fill="rgba(232,240,247,0.12)" stroke="rgba(232,240,247,0.3)" stroke-width="1.2"/>
+
+                    <!-- Drape / toga left -->
+                    <path d="M90 215 Q72 225 65 260 Q60 285 62 320 Q80 290 95 270 Q102 250 100 230 Z"
+                          fill="rgba(122,170,206,0.15)" stroke="rgba(232,240,247,0.2)" stroke-width="0.8"/>
+                    <!-- Drape fold lines -->
+                    <path d="M88 222 Q78 245 75 275" stroke="rgba(232,240,247,0.2)" stroke-width="0.7" fill="none"/>
+                    <path d="M95 218 Q86 242 84 268" stroke="rgba(232,240,247,0.15)" stroke-width="0.6" fill="none"/>
+
+                    <!-- Drape / toga right -->
+                    <path d="M170 215 Q188 225 195 260 Q200 285 198 320 Q180 290 165 270 Q158 250 160 230 Z"
+                          fill="rgba(122,170,206,0.15)" stroke="rgba(232,240,247,0.2)" stroke-width="0.8"/>
+
+                    <!-- Neck -->
+                    <path d="M112 203 Q112 178 130 175 Q148 178 148 203 Q140 208 130 208 Q120 208 112 203 Z"
+                          fill="rgba(232,240,247,0.18)" stroke="rgba(232,240,247,0.3)" stroke-width="1"/>
+
+                    <!-- Head shape -->
+                    <ellipse cx="130" cy="140" rx="52" ry="62"
+                             fill="rgba(232,240,247,0.15)" stroke="rgba(232,240,247,0.35)" stroke-width="1.3"/>
+
+                    <!-- Hair / curls top -->
+                    <path d="M84 122 Q82 100 88 85 Q96 65 110 57 Q122 50 130 50 Q138 50 150 57 Q164 65 172 85 Q178 100 176 122"
+                          fill="rgba(122,170,206,0.25)" stroke="rgba(232,240,247,0.4)" stroke-width="1.2"/>
+                    <!-- Curl texture -->
+                    <path d="M90 108 Q93 95 100 90" stroke="rgba(232,240,247,0.3)" stroke-width="0.8" fill="none"/>
+                    <path d="M98 100 Q101 88 109 84" stroke="rgba(232,240,247,0.25)" stroke-width="0.8" fill="none"/>
+                    <path d="M108 95 Q112 83 119 80" stroke="rgba(232,240,247,0.25)" stroke-width="0.7" fill="none"/>
+                    <path d="M120 92 Q124 80 130 78" stroke="rgba(232,240,247,0.25)" stroke-width="0.7" fill="none"/>
+                    <path d="M140 92 Q144 80 150 82" stroke="rgba(232,240,247,0.25)" stroke-width="0.7" fill="none"/>
+                    <path d="M152 97 Q156 86 163 87" stroke="rgba(232,240,247,0.25)" stroke-width="0.7" fill="none"/>
+                    <path d="M162 106 Q166 95 170 97" stroke="rgba(232,240,247,0.2)" stroke-width="0.7" fill="none"/>
+
+                    <!-- Brow ridge -->
+                    <path d="M100 130 Q115 124 130 124 Q145 124 160 130"
+                          stroke="rgba(232,240,247,0.35)" stroke-width="1" fill="none"/>
+
+                    <!-- Eyes -->
+                    <ellipse cx="114" cy="138" rx="9" ry="6" fill="rgba(232,240,247,0.08)" stroke="rgba(232,240,247,0.4)" stroke-width="1"/>
+                    <ellipse cx="146" cy="138" rx="9" ry="6" fill="rgba(232,240,247,0.08)" stroke="rgba(232,240,247,0.4)" stroke-width="1"/>
+                    <!-- Pupils -->
+                    <circle cx="114" cy="138" r="3" fill="rgba(122,170,206,0.5)"/>
+                    <circle cx="146" cy="138" r="3" fill="rgba(122,170,206,0.5)"/>
+                    <!-- Eye shine -->
+                    <circle cx="116" cy="136" r="1" fill="rgba(232,240,247,0.7)"/>
+                    <circle cx="148" cy="136" r="1" fill="rgba(232,240,247,0.7)"/>
+
+                    <!-- Nose -->
+                    <path d="M130 145 L126 162 Q130 166 134 162 Z"
+                          fill="rgba(232,240,247,0.1)" stroke="rgba(232,240,247,0.3)" stroke-width="0.8"/>
+
+                    <!-- Mouth / beard hint -->
+                    <path d="M116 172 Q123 177 130 178 Q137 177 144 172"
+                          stroke="rgba(232,240,247,0.35)" stroke-width="1" fill="none"/>
+                    <!-- Beard texture -->
+                    <path d="M108 168 Q110 180 114 188 Q120 196 130 198 Q140 196 146 188 Q150 180 152 168"
+                          fill="rgba(122,170,206,0.12)" stroke="rgba(232,240,247,0.2)" stroke-width="0.7"/>
+                    <path d="M112 172 Q114 184 118 190" stroke="rgba(232,240,247,0.18)" stroke-width="0.6" fill="none"/>
+                    <path d="M120 175 Q121 187 123 193" stroke="rgba(232,240,247,0.15)" stroke-width="0.6" fill="none"/>
+                    <path d="M148 172 Q146 184 142 190" stroke="rgba(232,240,247,0.18)" stroke-width="0.6" fill="none"/>
+
+                    <!-- Ear left -->
+                    <path d="M78 136 Q74 140 74 148 Q74 156 79 159 Q82 151 82 143 Z"
+                          fill="rgba(232,240,247,0.12)" stroke="rgba(232,240,247,0.3)" stroke-width="0.8"/>
+                    <!-- Ear right -->
+                    <path d="M182 136 Q186 140 186 148 Q186 156 181 159 Q178 151 178 143 Z"
+                          fill="rgba(232,240,247,0.12)" stroke="rgba(232,240,247,0.3)" stroke-width="0.8"/>
+
+                    <!-- Highlight lines on face -->
+                    <path d="M130 105 Q130 92 130 80" stroke="rgba(232,240,247,0.15)" stroke-width="0.5" fill="none"/>
+                    <path d="M118 112 Q112 118 108 126" stroke="rgba(232,240,247,0.12)" stroke-width="0.5" fill="none"/>
+                    <path d="M142 112 Q148 118 152 126" stroke="rgba(232,240,247,0.12)" stroke-width="0.5" fill="none"/>
+
+                    <!-- Base pedestal -->
+                    <rect x="95" y="370" width="70" height="10" rx="2"
+                          fill="rgba(232,240,247,0.15)" stroke="rgba(232,240,247,0.25)" stroke-width="0.8"/>
+                    <rect x="85" y="378" width="90" height="6" rx="2"
+                          fill="rgba(122,170,206,0.2)" stroke="rgba(232,240,247,0.2)" stroke-width="0.8"/>
+                </svg>
+
+                <!-- Floating label -->
+                <div class="bust-label">ABOUT ME</div>
+            </div>
+
+            <!-- Right: info -->
+            <div class="about-info">
+                <h1>About Me</h1>
+                <p class="about-desc">Xin chào! Tôi là <strong>Duy</strong>, sinh viên ngành IT1 tại ĐHBKHN.</p>
+
+                <div class="info-grid">
+                    <div class="info-card"><i data-lucide="cake"></i><span>18 tuổi</span></div>
+                    <div class="info-card"><i data-lucide="graduation-cap"></i><span>Sinh viên năm nhất</span></div>
+                    <div class="info-card"><i data-lucide="map-pin"></i><span>Hà Nội, Việt Nam</span></div>
+                    <div class="info-card"><i data-lucide="heart"></i><span>Code · Music · Game</span></div>
+                </div>
+
+                <div class="tag-group">
+                    <p class="tag-label">Đang học</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">HTML / CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+
+                <div class="tag-group">
+                    <p class="tag-label">Mục tiêu</p>
+                    <div class="tags">
+                        <span class="tag goal">Fullstack Developer</span>
+                        <span class="tag goal">Build sản phẩm thực tế</span>
+                        <span class="tag goal">Thực tập năm 3</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── SKILLS ── -->
+    <section id="skills" class="section">
+        <div class="section-inner">
+            <h1>Skills</h1>
+
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">HTML / CSS</span>
+                        <span class="skill-pct">70%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">JavaScript</span>
+                        <span class="skill-pct">45%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="45"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Python</span>
+                        <span class="skill-pct">50%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="50"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">C++</span>
+                        <span class="skill-pct">35%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="35"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">Git</span>
+                        <span class="skill-pct">40%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="40"></div></div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-header">
+                        <span class="skill-name">SQL</span>
+                        <span class="skill-pct">25%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="25"></div></div>
+                </div>
+            </div>
+
+            <div class="badge-group">
+                <span class="badge">VS Code</span>
+                <span class="badge">GitHub</span>
+                <span class="badge">Figma</span>
+                <span class="badge">Linux</span>
+                <span class="badge">Canva</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── ACHIEVEMENTS ── -->
+    <section id="achievements" class="section">
+        <div class="section-inner">
+            <h1>Thành tích</h1>
+            <div class="achievement-list">
+
+                <div class="achievement-card">
+                    <div class="ach-icon"><i data-lucide="book-open"></i></div>
+                    <div class="ach-body">
+                        <p class="ach-title">Hoàn thành khóa HTML/CSS cơ bản</p>
+                        <p class="ach-sub">Freecodecamp · 2024</p>
+                    </div>
+                    <span class="ach-badge done">✓ Hoàn thành</span>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="ach-icon"><i data-lucide="code"></i></div>
+                    <div class="ach-body">
+                        <p class="ach-title">Tự xây dựng trang portfolio cá nhân</p>
+                        <p class="ach-sub">HTML · CSS · JavaScript · 2025</p>
+                    </div>
+                    <span class="ach-badge done">✓ Hoàn thành</span>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="ach-icon"><i data-lucide="star"></i></div>
+                    <div class="ach-body">
+                        <p class="ach-title">GPA học kỳ đầu tiên</p>
+                        <p class="ach-sub">Đang cập nhật sau kỳ thi</p>
+                    </div>
+                    <span class="ach-badge pending">⏳ Sắp có</span>
+                </div>
+
+                <div class="achievement-card">
+                    <div class="ach-icon"><i data-lucide="trophy"></i></div>
+                    <div class="ach-body">
+                        <p class="ach-title">Mục tiêu: tham gia hackathon đầu tiên</p>
+                        <p class="ach-sub">Dự kiến 2025–2026</p>
+                    </div>
+                    <span class="ach-badge goal-badge">🎯 Mục tiêu</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── PROJECTS ── -->
+    <section id="projects" class="section">
+        <div class="section-inner">
+            <h1>Projects</h1>
+            <div class="project-grid">
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <i data-lucide="wallet"></i>
+                        <h3>App Quản Lý Chi Tiêu</h3>
+                    </div>
+                    <p class="project-desc">Ứng dụng theo dõi thu/chi cá nhân theo tháng, hỗ trợ biểu đồ thống kê và phân loại danh mục.</p>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="proj-link"><i data-lucide="github"></i> GitHub</a>
+                        <span class="proj-status wip">Đang phát triển</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <i data-lucide="user-circle"></i>
+                        <h3>Portfolio Website</h3>
+                    </div>
+                    <p class="project-desc">Trang profile cá nhân với hiệu ứng particles, sidebar icon, scroll animation và giao diện responsive.</p>
+                    <div class="project-tags">
+                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="proj-link"><i data-lucide="github"></i> GitHub</a>
+                        <a href="#" class="proj-link demo"><i data-lucide="external-link"></i> Demo</a>
+                    </div>
+                </div>
+
+                <div class="project-card add-card">
+                    <i data-lucide="plus-circle"></i>
+                    <p>Dự án tiếp theo<br><span>Coming soon...</span></p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact" class="section">
+        <div class="section-inner">
+            <h1>Contact</h1>
+            <p class="contact-desc">Kết nối với mình qua các kênh bên dưới nhé!</p>
+
+            <div class="contact-grid">
+                <a href="/cdn-cgi/l/email-protection#621b0d171022070f030b0e4c010d0f" class="contact-card">
+                    <div class="contact-icon mail-icon"><i data-lucide="mail"></i></div>
+                    <div>
+                        <p class="contact-name">Email</p>
+                        <p class="contact-val"><span class="__cf_email__" data-cfemail="3e47514b4c7e5b535f5752105d5153">[email&#160;protected]</span></p>
+                    </div>
+                </a>
+                <a href="#" class="contact-card">
+                    <div class="contact-icon github-icon"><i data-lucide="github"></i></div>
+                    <div>
+                        <p class="contact-name">GitHub</p>
+                        <p class="contact-val">github.com/kduy1030</p>
+                    </div>
+                </a>
+                <a href="#" class="contact-card">
+                    <div class="contact-icon fb-icon"><i data-lucide="facebook"></i></div>
+                    <div>
+                        <p class="contact-name">Facebook</p>
+                        <p class="contact-val">facebook.com/kduy1030</p>
+                    </div>
+                </a>
+                <a href="#" class="contact-card">
+                    <div class="contact-icon li-icon"><i data-lucide="linkedin"></i></div>
+                    <div>
+                        <p class="contact-name">LinkedIn</p>
+                        <p class="contact-val">linkedin.com/in/kduy1030</p>
+                    </div>
+                      </a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => { lucide.createIcons(); });
+</script>
+</body>
+</html>
