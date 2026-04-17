@@ -418,17 +418,46 @@ h1 {
 .skill-bar {
     width: 100%;
     height: 7px;
-    background: rgba(45,79,107,0.15);
+    /* Làm nền thanh bar tối hơn để tương phản với neon */
+    background: rgba(0, 0, 0, 0.3); 
     border-radius: 10px;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Viền cực mảnh cho sang */
 }
+
 
 .skill-fill {
     height: 100%;
     width: 0;
-    background: linear-gradient(to right, #4a7a9b, #7aaace);
+    /* Gradient trắng neon rực rỡ */
+    background: linear-gradient(to right, #ffffff, #e0f2ff, #ffffff);
     border-radius: 10px;
-    transition: width 1.1s cubic-bezier(0.4,0,0.2,1);
+    
+    /* Tạo hiệu ứng phát sáng (Glow) */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 
+                0 0 15px rgba(122, 170, 206, 0.5);
+    
+    transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* Thêm một hiệu ứng tia sáng nhỏ chạy dọc thanh bar (tùy chọn) */
+.skill-fill::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    animation: shine 2s infinite;
+}
+
+@keyframes shine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
 }
 
 .badge-group {
