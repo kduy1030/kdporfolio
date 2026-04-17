@@ -94,8 +94,8 @@ h1 {
 
 
 .hero-name {
-    font-size: 1.9rem;
-    font-weight: 800;
+    font-size: 4rem;
+    font-weight: 900;
     color: #e8f0f7;
     letter-spacing: 1px;
     margin-top: 2px;
@@ -103,19 +103,19 @@ h1 {
 }
 
 .hero-tag {
-    font-size: 0.88rem;
+    font-size: 1.8rem;
     color: rgba(232,240,247,0.55);
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
 }
 
 .hero-tag-hl {
     color: rgba(122,170,206,0.95);
-    font-weight: 700;
+    font-weight: 800;
 }
 
 /* Quote */
 .hero-quote {
-    font-size: 0.8rem;
+    font-size: 1.6rem;
     color: rgba(232,240,247,0.35);
     font-style: italic;
     letter-spacing: 0.2px;
