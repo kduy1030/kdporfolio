@@ -196,7 +196,7 @@ h1 {
 .avatar-upload { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .avatar-upload label { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
 .avatar-upload img {
-    width: 150px; height: 150px;
+    width: 300px; height: 300px;
     border-radius: 50%;
     border: 3px solid rgba(232,240,247,0.35);
     object-fit: cover;
