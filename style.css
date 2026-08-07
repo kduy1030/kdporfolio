@@ -91,10 +91,23 @@ h1 {
     gap: 8px;
 }
 
-
+/* Badge HUSTer */
+.hero-badge {
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #006eff;
+    background: rgba(0, 162, 255, 0.08);
+    border: 1px solid rgba(0, 72, 255, 0.3);
+    border-radius: 20px;
+    padding: 3px 14px;
+    margin-bottom: 2px;
+    text-shadow: 0 0 8px rgba(0, 60, 255, 0.4);
+}
 
 .hero-name {
-    font-size: 2.7rem;
+    font-size: 2.3rem;
     font-weight: 800;
     color: #e8f0f7;
     letter-spacing: 1px;
@@ -103,19 +116,19 @@ h1 {
 }
 
 .hero-tag {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     color: rgba(232,240,247,0.55);
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
 }
 
 .hero-tag-hl {
     color: rgba(122,170,206,0.95);
-    font-weight: 800;
+    font-weight: 700;
 }
 
 /* Quote */
 .hero-quote {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: rgba(232,240,247,0.35);
     font-style: italic;
     letter-spacing: 0.2px;
@@ -196,9 +209,9 @@ h1 {
 .avatar-upload { display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .avatar-upload label { display: flex; flex-direction: column; align-items: center; gap: 8px; cursor: pointer; }
 .avatar-upload img {
-    width: 300px; height: 300px;
+    width: 200px; height: 200px;
     border-radius: 50%;
-    border: 3px solid rgba(232,240,247,0.35);
+    border: 3px solid rgba(41, 119, 188, 0.512);
     object-fit: cover;
     transition: border-color 0.3s;
 }
@@ -206,9 +219,9 @@ h1 {
 .avatar-upload .overlay {
     position: static;
     background: rgba(232,240,247,0.12);
-    border-radius: 20px;
-    padding: 5px 14px;
-    font-size: 12px;
+    border-radius: 30px;
+    padding: 7.5px 21px;
+    font-size: 14px;
     color: rgba(232,240,247,0.65);
     border: 1px solid rgba(232,240,247,0.22);
     cursor: pointer;
@@ -405,46 +418,17 @@ h1 {
 .skill-bar {
     width: 100%;
     height: 7px;
-    /* Làm nền thanh bar tối hơn để tương phản với neon */
-    background: rgba(0, 0, 0, 0.3); 
+    background: rgba(45,79,107,0.15);
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.05); /* Viền cực mảnh cho sang */
 }
-
 
 .skill-fill {
     height: 100%;
     width: 0;
-    /* Gradient trắng neon rực rỡ */
-    background: linear-gradient(to right, #ffffff, #e0f2ff, #ffffff);
+    background: linear-gradient(to right, #4a7a9b, #7aaace);
     border-radius: 10px;
-    
-    /* Tạo hiệu ứng phát sáng (Glow) */
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 
-                0 0 15px rgba(122, 170, 206, 0.5);
-    
-    transition: width 1.1s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-}
-
-/* Thêm một hiệu ứng tia sáng nhỏ chạy dọc thanh bar (tùy chọn) */
-.skill-fill::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-    animation: shine 2s infinite;
-}
-
-@keyframes shine {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    transition: width 1.1s cubic-bezier(0.4,0,0.2,1);
 }
 
 .badge-group {
@@ -465,51 +449,363 @@ h1 {
     font-weight: 600;
 }
 
-/* ── ACHIEVEMENTS ── */
-.achievement-list {
-    width: 100%;
+/* ── ACHIEVEMENTS: Horizontal Quest Track ── */
+.achievements-quest {
+    position: relative;
+    overflow: visible;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(122,170,206,0.10) 0%, transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(0,255,150,0.06) 0%, transparent 45%),
+        linear-gradient(to bottom, #1c3247 0%, #16283a 100%);
+}
+.achievements-quest::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(122,170,206,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(122,170,206,0.06) 1px, transparent 1px);
+    background-size: 42px 42px;
+    pointer-events: none;
+    z-index: 0;
+}
+.achievements-quest h1 { color: #e8f0f7; }
+
+.quest-inner { max-width: 1100px; position: relative; z-index: 1; }
+
+.quest-track {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    gap: 28px;
+    margin-top: 50px;
+    overflow-x: auto;
+    padding: 30px 6px 20px;
+}
+
+.quest-beam {
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg,
+        rgba(0,255,150,0.55) 0%, rgba(122,170,206,0.5) 45%,
+        rgba(122,170,206,0.15) 75%, rgba(122,170,206,0.05) 100%);
+    box-shadow: 0 0 12px rgba(122,170,206,0.5);
+    z-index: 0;
+}
+
+.quest-card {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 240px;
+    min-width: 230px;
+    background: rgba(232,240,247,0.06);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(232,240,247,0.14);
+    border-radius: 20px;
+    padding: 28px 22px 22px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    align-items: center;
+    text-align: center;
+    gap: 14px;
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+    cursor: pointer;
+}
+.quest-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(232,240,247,0.28);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.25);
 }
 
-.achievement-card {
+.quest-glow {
+    position: absolute; inset: 0; border-radius: 20px;
+    background: radial-gradient(circle at 50% 30%, rgba(122,170,206,0.18) 0%, transparent 70%);
+    opacity: 0; transition: opacity 0.4s; pointer-events: none;
+}
+.quest-card:hover .quest-glow { opacity: 1; }
+
+.quest-card.completed {
+    background: linear-gradient(160deg, rgba(0,255,150,0.09) 0%, rgba(122,170,206,0.07) 100%);
+    border-color: rgba(0,255,150,0.28);
+    box-shadow: 0 0 30px rgba(0,255,150,0.08) inset, 0 8px 24px rgba(0,0,0,0.18);
+}
+.quest-card.completed:hover .quest-glow {
+    background: radial-gradient(circle at 50% 30%, rgba(0,255,150,0.25) 0%, transparent 70%);
+}
+
+.quest-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(45,79,107,0.35);
+    border: 2px solid rgba(122,170,206,0.35);
+    transition: all 0.3s;
+}
+.quest-icon svg { width: 26px; height: 26px; color: rgba(122,170,206,0.85); }
+.quest-card.completed .quest-icon { background: rgba(0,255,150,0.15); border-color: rgba(0,255,150,0.55); }
+.quest-card.completed .quest-icon svg { color: #00ff96; }
+.quest-card:hover .quest-icon { transform: scale(1.1) rotate(5deg); box-shadow: 0 0 20px rgba(122,170,206,0.4); }
+.quest-card.completed:hover .quest-icon { box-shadow: 0 0 25px rgba(0,255,150,0.6); }
+
+.quest-content { display: flex; flex-direction: column; gap: 4px; }
+.quest-title { font-size: 1rem; font-weight: 700; color: #e8f0f7; }
+.quest-subtitle { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(122,170,206,0.9); }
+.quest-desc { font-size: 0.82rem; color: rgba(232,240,247,0.7); line-height: 1.4; }
+.quest-source { font-size: 0.72rem; color: rgba(232,240,247,0.4); }
+
+.quest-status {
+    display: flex; align-items: center; gap: 6px;
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 0.75rem; font-weight: 700; white-space: nowrap;
+}
+.quest-status svg { width: 14px; height: 14px; }
+.quest-status.done {
+    background: rgba(0,255,150,0.15); color: #4dffb0;
+    border: 1px solid rgba(0,255,150,0.4);
+    text-shadow: 0 0 8px rgba(0,255,150,0.5);
+}
+.quest-status.pending-badge { background: rgba(122,170,206,0.12); color: #9fc3de; border: 1px solid rgba(122,170,206,0.3); }
+.quest-status.goal-badge { background: rgba(200,150,255,0.14); color: #c6a8f5; border: 1px solid rgba(200,150,255,0.35); }
+
+.quest-card.pending { background: rgba(122,170,206,0.05); border-color: rgba(122,170,206,0.18); opacity: 0.85; }
+.quest-card.pending .quest-icon { background: rgba(122,170,206,0.12); border-color: rgba(122,170,206,0.3); }
+.quest-card.pending .quest-icon svg { color: rgba(122,170,206,0.7); }
+
+.quest-card.castle {
+    background: linear-gradient(160deg, rgba(200,150,255,0.08) 0%, rgba(122,170,206,0.06) 100%);
+    border-color: rgba(200,150,255,0.25);
+}
+.castle-glow {
+    background: radial-gradient(circle at 50% 30%, rgba(200,150,255,0.2) 0%, transparent 60%);
+    opacity: 1;
+}
+.quest-card.castle:hover .castle-glow {
+    background: radial-gradient(circle at 50% 30%, rgba(200,150,255,0.35) 0%, transparent 70%);
+}
+.castle-svg { width: 140px; height: auto; margin-bottom: -6px; filter: drop-shadow(0 0 12px rgba(200,150,255,0.3)); }
+.castle-title { color: #d3b8f5; }
+
+.twinkle { animation: twinkle 2s ease-in-out infinite; }
+@keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+@media (max-width: 720px) {
+    .quest-track { flex-direction: column; overflow-x: visible; }
+    .quest-beam {
+        top: 0; bottom: 0; left: 50%; right: auto; width: 2px; height: auto;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, rgba(0,255,150,0.55), rgba(122,170,206,0.1));
+    }
+}
+/* Glow effect */
+.quest-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: radial-gradient(circle at 50% 50%, rgba(122,170,206,0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s;
+    pointer-events: none;
+}
+
+.quest-card:hover .quest-glow {
+    opacity: 1;
+}
+
+.quest-card.completed:hover .quest-glow {
+    background: radial-gradient(circle at 50% 50%, rgba(0,255,150,0.2) 0%, transparent 70%);
+}
+
+/* Icon */
+.quest-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 14px;
-    background: rgba(255,255,255,0.55);
-    border: 1px solid rgba(45,79,107,0.12);
-    border-radius: 14px;
-    padding: 14px 18px;
-    text-align: left;
-    transition: background 0.2s, transform 0.2s;
-}
-.achievement-card:hover { background: rgba(255,255,255,0.75); transform: translateX(-3px); }
-
-.ach-icon {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    background: rgba(45,79,107,0.1);
-    display: flex; align-items: center; justify-content: center;
+    justify-content: center;
     flex-shrink: 0;
+    background: rgba(45,79,107,0.2);
+    border: 2px solid rgba(122,170,206,0.3);
+    position: relative;
+    transition: all 0.3s;
+}
+
+.quest-icon svg {
+    width: 26px;
+    height: 26px;
+    color: rgba(122,170,206,0.8);
+    transition: all 0.3s;
+}
+
+.quest-card.completed .quest-icon {
+    background: rgba(0,255,150,0.15);
+    border-color: rgba(0,255,150,0.5);
+}
+
+.quest-card.completed .quest-icon svg {
+    color: #00ff96;
+}
+
+.quest-card:hover .quest-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 0 20px rgba(122,170,206,0.4);
+}
+
+.quest-card.completed:hover .quest-icon {
+    box-shadow: 0 0 25px rgba(0,255,150,0.6);
+}
+
+/* Content */
+.quest-content {
+    flex: 1;
+    text-align: left;
+}
+
+.quest-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1e3a52;
+    margin-bottom: 4px;
+    transition: color 0.3s;
+}
+
+.quest-card:hover .quest-title {
     color: #2d4f6b;
 }
-.ach-icon svg { width: 18px; height: 18px; }
 
-.ach-body { flex: 1; }
-.ach-title { font-size: 0.92rem; font-weight: 600; color: #1e3a52; margin-bottom: 2px; }
-.ach-sub   { font-size: 0.8rem; color: #5a8bb0; }
-
-.ach-badge {
+.quest-subtitle {
     font-size: 0.75rem;
-    padding: 4px 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(122,170,206,0.85);
+    margin-bottom: 6px;
+}
+
+.quest-desc {
+    font-size: 0.88rem;
+    color: #4a7a9b;
+    margin-bottom: 4px;
+    line-height: 1.4;
+}
+
+.quest-source {
+    font-size: 0.78rem;
+    color: rgba(45,79,107,0.6);
+}
+
+/* Status badge */
+.quest-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
     border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: 600;
     white-space: nowrap;
 }
-.ach-badge.done       { background: #d4edda; color: #2d6a4f; }
-.ach-badge.pending    { background: #fff3cd; color: #856404; }
-.ach-badge.goal-badge { background: #d1ecf1; color: #0c5460; }
+
+.quest-status svg {
+    width: 16px;
+    height: 16px;
+}
+
+.quest-status.done {
+    background: rgba(0,255,150,0.15);
+    color: #00d17a;
+    border: 1px solid rgba(0,255,150,0.3);
+}
+
+.quest-status.pending-badge {
+    background: rgba(255,200,100,0.15);
+    color: #d4a028;
+    border: 1px solid rgba(255,200,100,0.3);
+}
+
+.quest-status.goal-badge {
+    background: rgba(200,150,255,0.15);
+    color: #9d7dd8;
+    border: 1px solid rgba(200,150,255,0.35);
+}
+
+/* Pending card dimmed */
+.quest-card.pending {
+    opacity: 0.75;
+}
+
+.quest-card.pending .quest-icon {
+    background: rgba(255,200,100,0.12);
+    border-color: rgba(255,200,100,0.35);
+}
+
+.quest-card.pending .quest-icon svg {
+    color: rgba(255,200,100,0.8);
+}
+
+/* Castle card special */
+.quest-card.castle {
+    background: linear-gradient(135deg, rgba(200,150,255,0.08) 0%, rgba(122,170,206,0.08) 100%);
+    border: 1px solid rgba(200,150,255,0.25);
+    min-height: 220px;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px;
+}
+
+.castle-glow {
+    background: radial-gradient(circle at 50% 30%, rgba(200,150,255,0.2) 0%, transparent 60%);
+    opacity: 1;
+}
+
+.quest-card.castle:hover .castle-glow {
+    background: radial-gradient(circle at 50% 30%, rgba(200,150,255,0.35) 0%, transparent 70%);
+}
+
+.castle-svg {
+    width: 200px;
+    height: 160px;
+    margin: 0 auto 16px;
+    filter: drop-shadow(0 0 15px rgba(200,150,255,0.3));
+}
+
+.twinkle {
+    animation: twinkle 2s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 1; }
+}
+
+.castle-title {
+    color: #7a5bb8;
+    font-size: 1.1rem;
+}
+
+.quest-card.castle .quest-content {
+    width: 100%;
+}
+
+/* Parallax hover effect */
+.quest-card {
+    transform-style: preserve-3d;
+}
+
+.quest-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(45,79,107,0.15);
+}
+
+.quest-card.completed:hover {
+    box-shadow: 0 12px 45px rgba(0,255,150,0.2);
+}
+
+.quest-card.castle:hover {
+    box-shadow: 0 15px 50px rgba(200,150,255,0.25);
+}
 
 /* ── PROJECTS ── */
 .project-grid {
@@ -693,3 +989,234 @@ h1 {
 .sidebar.on-light .sidebar-link.active { color: #2d4f6b; background: rgba(45,79,107,0.12); border-color: rgba(45,79,107,0.35); transform: translateX(-3px); }
 .sidebar.on-light .sidebar-link.active svg { width: 21px; height: 21px; }
 .sidebar.on-light .sidebar-link::before { background: rgba(45,79,107,0.85); }
+
+/* ── Categorized Skills ── */
+.skills-categories {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.skill-group {
+    background: rgba(255,255,255,0.45);
+    border: 1px solid rgba(45,79,107,0.12);
+    border-radius: 16px;
+    padding: 20px 22px;
+}
+
+.skill-group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(45,79,107,0.1);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2d4f6b;
+}
+
+.skill-group-header svg {
+    width: 15px;
+    height: 15px;
+    color: #4a7a9b;
+}
+
+/* ── Modal ── */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20,36,50,0.55);
+    backdrop-filter: blur(6px);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-box {
+    background: #f0f6fc;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 520px;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(16px) scale(0.98);
+    transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: 0 24px 60px rgba(20,36,50,0.2);
+}
+
+.modal-overlay.active .modal-box {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px; right: 12px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgba(45,79,107,0.2);
+    background: rgba(255,255,255,0.7);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    color: #4a7a9b;
+    z-index: 1;
+    transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(255,255,255,1); color: #1e3a52; }
+.modal-close svg   { width: 15px; height: 15px; }
+
+.modal-preview {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #2d4f6b 0%, #4a7a9b 100%);
+    display: flex; align-items: center; justify-content: center;
+}
+
+.modal-preview-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(232,240,247,0.35);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+.modal-preview-placeholder svg { width: 36px; height: 36px; }
+
+.modal-body {
+    padding: 22px 24px 24px;
+}
+
+.modal-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e3a52;
+    margin-bottom: 8px;
+}
+
+.modal-desc {
+    font-size: 0.87rem;
+    color: #4a7a9b;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.modal-tech {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #5a8bb0;
+    background: rgba(45,79,107,0.08);
+    border-radius: 6px;
+    padding: 3px 10px;
+    margin-bottom: 18px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* ── About: Character image (replaces bust) ── */
+.about-char-img {
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter:
+        drop-shadow(0 0 18px rgba(122, 170, 206, 0.35))
+        drop-shadow(0 0 40px rgba(122, 170, 206, 0.15));
+    animation: bust-float 5s ease-in-out infinite;
+    /* Tái dùng keyframe bust-float đã có sẵn */
+}
+
+/* ── About: Layout wider ── */
+.about-layout {
+    max-width: 1100px;
+    gap: 60px;
+}
+
+/* ── Info card: Glassmorphism + hover ── */
+.info-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(122, 170, 206, 0.25);
+    color: rgba(232, 240, 247, 0.92);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 255, 150, 0.5);
+    box-shadow: 0 0 12px rgba(0, 255, 150, 0.15);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.info-card svg {
+    width: 15px;
+    height: 15px;
+    opacity: 1;
+    color: rgba(122, 170, 206, 0.9);
+}
+
+/* ── Tag: "Đang học" tông xanh sáng ── */
+.tag.learn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(122, 170, 206, 0.12);
+    border: 1px solid rgba(122, 170, 206, 0.35);
+    color: #a8d4f0;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.tag.learn:hover {
+    background: rgba(122, 170, 206, 0.22);
+    border-color: rgba(122, 170, 206, 0.6);
+}
+
+.tag.learn svg {
+    width: 12px;
+    height: 12px;
+    color: #7aaace;
+    flex-shrink: 0;
+}
+
+/* ── Tag: "Mục tiêu" tông tím/neon nhạt ── */
+.tag.goal {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(200, 150, 255, 0.1);
+    border: 1px solid rgba(200, 150, 255, 0.3);
+    color: #d4aaff;
+    transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.tag.goal:hover {
+    background: rgba(200, 150, 255, 0.18);
+    border-color: rgba(200, 150, 255, 0.55);
+    box-shadow: 0 0 10px rgba(200, 150, 255, 0.15);
+}
+
+.tag.goal svg {
+    width: 12px;
+    height: 12px;
+    color: #c896ff;
+    flex-shrink: 0;
+}
