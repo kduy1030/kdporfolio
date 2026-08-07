@@ -32,6 +32,26 @@ function animateSkills() {
     }
 }
 
+// ── Quest path animation (chạy 1 lần khi section achievements vào view) ──
+let questPathDrawn = false;
+
+function animateQuestPath() {
+    if (questPathDrawn) return;
+    const questSection = document.getElementById("achievements");
+    if (!questSection) return;
+    
+    const sectionTop = questSection.offsetTop;
+    const scrollBot  = container.scrollTop + container.clientHeight;
+
+    if (scrollBot > sectionTop + 150) {
+        questPathDrawn = true;
+        const path = document.getElementById("questPath");
+        if (path) {
+            path.style.animation = "drawPath 3s ease-out forwards";
+        }
+    }
+}
+
 container.addEventListener("scroll", () => {
     let current = "";
     sections.forEach(section => {
@@ -56,6 +76,9 @@ container.addEventListener("scroll", () => {
 
     // skill bars
     animateSkills();
+    
+    // quest path drawing
+    animateQuestPath();
 });
 
 sidebar.classList.add("on-dark");
@@ -161,9 +184,9 @@ let wt = 0;
 
 const waveDefs = [
     { amp: 28, period: 0.010, speed: 0.00006, yRatio: 0.72, alpha: 0.07 },
-    { amp: 20, period: 0.015, speed: 0.0001, yRatio: 0.78, alpha: 0.05 },
+    { amp: 20, period: 0.015, speed: 0.00009, yRatio: 0.78, alpha: 0.05 },
     { amp: 35, period: 0.007, speed: 0.00004, yRatio: 0.85, alpha: 0.06 },
-    { amp: 16, period: 0.019, speed: 0.00009, yRatio: 0.91, alpha: 0.04 },
+    { amp: 16, period: 0.019, speed: 0.00011, yRatio: 0.91, alpha: 0.04 },
 ];
 
 function drawWaves() {
@@ -191,3 +214,28 @@ function drawWaves() {
     requestAnimationFrame(drawWaves);
 }
 drawWaves();
+
+// ── Modal ──
+function openModal(btn) {
+    const modal = document.getElementById("projectModal");
+    document.getElementById("modalTitle").textContent   = btn.dataset.modalTitle;
+    document.getElementById("modalDesc").textContent    = btn.dataset.modalDesc;
+    document.getElementById("modalTech").textContent    = btn.dataset.modalTech;
+    document.getElementById("modalGithub").href         = btn.dataset.modalGithub;
+    document.getElementById("modalLive").href           = btn.dataset.modalLive;
+    modal.classList.add("active");
+    // Re-render lucide icons inside modal
+    lucide.createIcons();
+}
+
+function closeModal() {
+    document.getElementById("projectModal").classList.remove("active");
+}
+
+function handleOverlayClick(e) {
+    if (e.target === document.getElementById("projectModal")) closeModal();
+}
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
+});
